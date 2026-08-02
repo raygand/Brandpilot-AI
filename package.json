@@ -1,0 +1,14 @@
+{
+  "name": "brandpilot-ai-prototype",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Interactive brand decision simulation learning prototype",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.1.0"
+  }
+}
