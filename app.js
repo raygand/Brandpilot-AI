@@ -178,7 +178,7 @@ function renderReadiness() {
   $('#readinessStatus span').textContent = status[1];
 
   const weakest = [...metrics].sort((a, b) => (a.score / a.max) - (b.score / b.max))[0];
-  const [title, copy] = priorityContent[t('nextBestTest')];
+  const [title, copy] = priorityContent[weakest.key];
   $('#priorityTitle').textContent = title;
   $('#priorityCopy').textContent = copy;
   $('#metricBars').innerHTML = metrics.map(metric => `<div class="metric ${metric.key === weakest.key ? 'weak' : ''}"><span>${t('metricLabels.' + metric.key)}</span><b>${metric.score} / ${metric.max}</b><i style="--v:${(metric.score / metric.max) * 100}%"></i></div>`).join('');

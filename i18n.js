@@ -606,6 +606,11 @@ window.applyTranslations = function applyTranslations() {
 
   // Nav labels
   $$('.nav b').forEach((el, i) => { if (data.nav && data.nav[i]) el.textContent = data.nav[i]; });
+  // Nav aria-labels
+  const navBtns = document.querySelectorAll('button.nav');
+  if (data.navAria && navBtns.length) {
+    navBtns.forEach((el, i) => { if (data.navAria[i]) el.setAttribute('aria-label', data.navAria[i]); });
+  }
 
   // Topbar
   if ($('#caseChipLabel')) $('#caseChipLabel').textContent = data.caseChipLabel || '';
@@ -616,7 +621,7 @@ window.applyTranslations = function applyTranslations() {
   }
 
   // Hero
-  if ($('#heroTitle')) $('#heroTitle').textContent = data.heroTitle || '';
+  if ($('#heroTitle')) $('#heroTitle').innerHTML = data.heroTitle || '';
   const lead = $('.lead');
   if (lead) lead.innerHTML = data.heroLead || '';
   const guardrail = $('.guardrail');
