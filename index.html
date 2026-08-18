@@ -28,9 +28,15 @@
       <header class="topbar">
         <div class="brand"><strong>BRANDPILOT</strong><b>AI</b></div>
         <div class="progress" aria-label="ความคืบหน้า"><i id="progressBar"></i></div>
-        <div class="case-chip"><i></i><span>Simulation case</span><strong>DR.MUSCLE</strong></div>
+        <div class="case-chip"><i></i><span id="caseChipLabel">Simulation case</span><strong>DR.MUSCLE</strong></div>
+        <div class="lang-switcher" id="langSwitcher" role="group" aria-label="Language selector">
+          <button class="lang-btn active" data-lang="th" type="button">ไทย</button>
+          <button class="lang-btn" data-lang="en" type="button">EN</button>
+          <button class="lang-btn" data-lang="zh" type="button">中文</button>
+        </div>
         <button class="ghost top-reset" id="resetTop" type="button">เริ่มใหม่</button>
-        <div class="mode">LEARNING MODE</div>
+        <button class="wow-btn" id="wowBtn" type="button">✨ WOW</button>
+        <div class="mode" id="modeLabel">LEARNING MODE</div>
       </header>
 
       <section class="screen active" data-screen="0" aria-labelledby="heroTitle">

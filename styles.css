@@ -111,3 +111,35 @@ button:disabled{opacity:.45;cursor:not-allowed}
 }
 
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+/* Language Switcher */
+.lang-switcher{display:flex;gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-left:12px}
+.lang-btn{border:0;background:transparent;color:var(--muted);padding:8px 12px;font-size:11px;font-weight:700;cursor:pointer;transition:.2s ease;letter-spacing:1px}
+.lang-btn:hover{background:rgba(57,117,255,.1);color:var(--ivory)}
+.lang-btn.active{background:var(--cobalt);color:#fff}
+
+/* WOW Button */
+.wow-btn{border:1px solid var(--lime)!important;background:rgba(186,244,0,.1)!important;color:var(--lime)!important;padding:8px 14px!important;font-size:11px!important;font-weight:700;cursor:pointer;animation:wowPulse 2s infinite;border-radius:4px!important;letter-spacing:1px}
+.wow-btn:hover{background:rgba(186,244,0,.25)!important;transform:scale(1.05)}
+@keyframes wowPulse{0%,100%{box-shadow:0 0 5px rgba(186,244,0,.3)}50%{box-shadow:0 0 20px rgba(186,244,0,.6)}}
+
+/* WOW Overlay */
+.wow-overlay{position:fixed;inset:0;z-index:9999;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .5s ease}
+.wow-overlay.active{opacity:1;pointer-events:auto}
+.wow-overlay canvas{position:absolute;inset:0}
+.wow-content{position:relative;z-index:2;text-align:center}
+.wow-eyebrow{font-size:14px;letter-spacing:4px;color:var(--lime);margin-bottom:16px;animation:wowSlideDown .6s ease}
+.wow-title{font-size:clamp(36px,5vw,72px);font-weight:900;color:#fff;margin:0 0 12px;letter-spacing:-2px;animation:wowSlideDown .8s ease}
+.wow-subtitle{font-size:clamp(18px,2vw,28px);color:var(--aqua);margin:0 0 24px;animation:wowSlideDown 1s ease}
+.wow-score-display{font-size:clamp(48px,7vw,120px);font-weight:900;color:var(--lime);text-shadow:0 0 40px rgba(186,244,0,.5);animation:wowScaleIn 1.2s ease;position:relative}
+.wow-score-label{font-size:14px;letter-spacing:3px;color:var(--muted);margin-top:8px}
+.wow-close{margin-top:32px;padding:14px 32px;border:2px solid var(--lime);background:transparent;color:var(--lime);font-size:16px;font-weight:700;cursor:pointer;border-radius:8px;animation:wowSlideUp 1.5s ease;transition:.3s}
+.wow-close:hover{background:var(--lime);color:#000}
+.wow-close:disabled{opacity:.5;cursor:wait}
+.wow-strategy{margin-top:20px;font-size:clamp(16px,2vw,24px);color:#fff;max-width:600px;line-height:1.6;animation:wowSlideUp 1.8s ease}
+.wow-strategy b{color:var(--aqua)}
+.wow-particles{position:absolute;inset:0;pointer-events:none}
+@keyframes wowSlideDown{from{transform:translateY(-30px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes wowSlideUp{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes wowScaleIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes wowFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
