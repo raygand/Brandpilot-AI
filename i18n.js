@@ -599,100 +599,136 @@ function t(key, replacements = {}) {
 
 
 // Apply all translations to DOM
+// Apply all translations to DOM — data-i18n based
+// Apply all translations to DOM — data-i18n based (FULL COVERAGE)
 window.applyTranslations = function applyTranslations() {
   const data = I18N[currentLang];
-  const $ = (sel) => document.querySelector(sel);
-  const $$ = (sel) => document.querySelectorAll(sel);
 
-  // Nav labels
-  $$('.nav b').forEach((el, i) => { if (data.nav && data.nav[i]) el.textContent = data.nav[i]; });
-  // Nav aria-labels
-  const navBtns = document.querySelectorAll('button.nav');
-  if (data.navAria && navBtns.length) {
-    navBtns.forEach((el, i) => { if (data.navAria[i]) el.setAttribute('aria-label', data.navAria[i]); });
-  }
+  // 1. Handle ALL data-i18n attributes with proper nested key resolution
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (!key) return;
+    
+    // Special handling for nav buttons (use array index)
+    if (key === 'nav') {
+      const navIdx = Array.from(el.closest('button.nav')?.parentElement?.querySelectorAll('button.nav') || []).indexOf(el.closest('button.nav'));
+      if (data.nav && data.nav[navIdx] !== undefined) {
+        el.textContent = data.nav[navIdx];
+      }
+      return;
+    }
+    
+    // Special handling for heroProof items (use array index)
+    if (key === 'heroProof') {
+      const proofItems = document.querySelectorAll('.hero-proof span');
+      const proofIdx = Array.from(proofItems).indexOf(el);
+      if (data.heroProof && data.heroProof[proofIdx] !== undefined) {
+        el.textContent = data.heroProof[proofIdx];
+      }
+      return;
+    }
 
-  // Topbar
-  if ($('#caseChipLabel')) $('#caseChipLabel').textContent = data.caseChipLabel || '';
-  if ($('#modeLabel')) $('#modeLabel').textContent = data.modeLabel || '';
-  if ($('#resetTop')) $('#resetTop').textContent = data.resetTop || '';
-  if ($('#wowBtn')) {
-    $('#wowBtn').innerHTML = `<i></i>${data.wowLabel || '✨ WOW MODE'}`;
-  }
-
-  // Hero
-  if ($('#heroTitle')) $('#heroTitle').innerHTML = data.heroTitle || '';
-  const lead = $('.lead');
-  if (lead) lead.innerHTML = data.heroLead || '';
-  const guardrail = $('.guardrail');
-  if (guardrail) guardrail.textContent = data.guardrail || '';
-  // Hero proof items
-  const proofItems = $$('.hero-proof span');
-  if (data.heroProof && proofItems.length) {
-    proofItems.forEach((el, i) => { if (data.heroProof[i]) el.textContent = data.heroProof[i]; });
-  }
-  // Hero start button
-  const startBtn = $('.primary[data-next]');
-  if (startBtn) startBtn.textContent = data.heroStart || '';
-
-  // Input screen
-  if ($('#inputTitle')) $('#inputTitle').textContent = data.inputTitle || '';
-  // Form labels
-  Object.entries(data.formLabels || {}).forEach(([key, label]) => {
-    const el = $(`#label_${key}`) || $(`label[for="${key}"]`);
-    if (el) el.textContent = label;
+    // Resolve nested key (e.g., "formLabels.price" -> data.formLabels.price)
+    const value = key.split('.').reduce((obj, k) => obj?.[k], data);
+    if (value === undefined || value === null) return;
+    
+    if (typeof value === 'string') {
+      // For textarea placeholders
+      if (el.tagName === 'TEXTAREA') {
+        el.placeholder = value;
+        return;
+      }
+      // For input placeholders
+      if (el.tagName === 'INPUT') {
+        el.placeholder = value;
+        return;
+      }
+      // If element has child elements (like <b>, <span>, <em> inside), update first text node
+      const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === 3);
+      if (textNodes.length > 0) {
+        textNodes[0].textContent = value;
+      } else {
+        el.textContent = value;
+      }
+    }
   });
-  // Form units
-  Object.entries(data.formUnits || {}).forEach(([key, unit]) => {
-    const el = $(`#unit_${key}`);
-    if (el) el.textContent = unit;
+
+  // 2. Handle elements that need innerHTML (preserve <br>, <em>, <b> tags)
+  const innerHTMLMap = {
+    'heroTitle': 'heroTitle',
+    'reflectionTitle': 'reflectionTitle',
+    'readinessTitle': 'readinessTitle',
+    'scenarioTitle': 'scenarioTitle',
+    'buyerTitle': 'buyerTitle',
+    'roadmapTitle': 'roadmapTitle',
+    'inputSubtitle': 'inputDesc',
+    'productMeta': 'productMeta',
+    'dialogTitle': 'dialogTitle',
+  };
+  for (const [elementId, dataKey] of Object.entries(innerHTMLMap)) {
+    const el = document.getElementById(elementId);
+    if (el && data[dataKey]) {
+      el.innerHTML = data[dataKey];
+    }
+  }
+  // Also handle elements with data-i18n that have innerHTML content
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    // Check if the original content had HTML tags (br, em, b)
+    const value = key.split('.').reduce((obj, k) => obj?.[k], data);
+    if (typeof value === 'string' && (value.includes('<br') || value.includes('<em') || value.includes('<b>'))) {
+      el.innerHTML = value;
+    }
   });
-  // Select options
-  $$('.form-select option').forEach(opt => {
-    const idx = parseInt(opt.value) - 1;
-    if (data.selectOptions && data.selectOptions[idx]) opt.textContent = data.selectOptions[idx];
+
+  // 3. Handle select options with nested keys
+  document.querySelectorAll('select option[data-i18n]').forEach(opt => {
+    const key = opt.getAttribute('data-i18n');
+    const value = key.split('.').reduce((obj, k) => obj?.[k], data);
+    if (typeof value === 'string') opt.textContent = value;
   });
-  if ($('#inputHint')) $('#inputHint').textContent = data.inputHint || '';
-  if ($('#analyze')) $('#analyze').textContent = data.analyzeBtn || '';
 
-  // Readiness screen
-  if ($('#readinessTitle')) $('#readinessTitle').textContent = data.readinessTitle || '';
-  if ($('#formulaToggle')) $('#formulaToggle').textContent = data.formulaToggleOpen || '';
-  if ($('#confidenceLabel span')) $('#confidenceLabel span').textContent = data.confidence || '';
-
-  // Scenario screen
-  if ($('#scenarioTitle')) $('#scenarioTitle').textContent = data.scenarioTitle || '';
-
-  // Buyer screen
-  if ($('#buyerTitle')) $('#buyerTitle').textContent = data.buyerTitle || '';
-  if ($('#buyerAnswer')) {
-    const q = data.buyerQuestions?.[0];
-    if (q) $('#buyerAnswer').placeholder = q.prompt || '';
+  // 4. Handle special UI updates
+  // WOW button with icon
+  const wowBtn = document.getElementById('wowBtn');
+  if (wowBtn && data.wowLabel) {
+    wowBtn.innerHTML = `<i></i>${data.wowLabel}`;
   }
-  if ($('#evaluate')) $('#evaluate').textContent = data.evaluateBtn || '';
-
-  // Roadmap screen
-  if ($('#roadmapTitle')) $('#roadmapTitle').textContent = data.roadmapTitle || '';
-
-  // Reflection screen
-  if ($('#reflectionTitle')) $('#reflectionTitle').textContent = data.reflectionTitle || '';
-  // Reflection labels
-  const reflLabels = $$('.reflection-label, .reflection-item label');
-  if (data.reflectionLabels) {
-    reflLabels.forEach((el, i) => { if (data.reflectionLabels[i]) el.textContent = data.reflectionLabels[i]; });
-  }
-  // Reflection placeholders
-  const reflInputs = $$('.reflection-item textarea, .reflection-item input');
-  if (data.reflectionPlaceholders) {
-    reflInputs.forEach((el, i) => { if (data.reflectionPlaceholders[i]) el.placeholder = data.reflectionPlaceholders[i]; });
-  }
-  if ($('#saveReflection')) $('#saveReflection').textContent = data.saveReflectionBtn || '';
-  if ($('#downloadSummary')) $('#downloadSummary').textContent = data.downloadBtn || '';
-  if ($('#restart')) $('#restart').textContent = data.restartBtn || '';
-
-  // Dialog
-  if ($('#reasonDialog h3')) $('#reasonDialog h3').textContent = data.dialogTitle || '';
-  if ($('#closeDialog')) $('#closeDialog').textContent = data.dialogClose || '';
+  // Case chip
+  const caseChip = document.getElementById('caseChipLabel');
+  if (caseChip && data.caseChip) caseChip.textContent = data.caseChip;
+  // Mode label
+  const modeLabel = document.getElementById('modeLabel');
+  if (modeLabel && data.mode) modeLabel.textContent = data.mode;
+  // Reset button
+  const resetTop = document.getElementById('resetTop');
+  if (resetTop && data.resetTop) resetTop.textContent = data.resetTop;
+  // Hero start button (first .primary[data-next] = hero)
+  const heroStart = document.querySelector('.hero .primary[data-next]') || document.querySelector('button.primary[data-next]');
+  if (heroStart && data.heroStart) heroStart.textContent = data.heroStart;
+  // Disclaimer
+  document.querySelectorAll('.disclaimer').forEach(el => {
+    if (data.disclaimer) el.textContent = data.disclaimer;
+  });
+  // Guardrail (has span inside)
+  document.querySelectorAll('.guardrail').forEach(el => {
+    if (data.guardrail) {
+      const span = el.querySelector('span');
+      if (span) {
+        // Keep the span, update the text after it
+        const textNode = Array.from(el.childNodes).find(n => n.nodeType === 3);
+        if (textNode) textNode.textContent = ' ' + data.guardrail;
+      } else {
+        el.innerHTML = `<span>HUMAN-IN-THE-LOOP</span> ${data.guardrail}`;
+      }
+    }
+  });
+  // Dialog h3
+  document.querySelectorAll('#reasonDialog h3').forEach(el => {
+    if (data.dialogTitle) el.innerHTML = data.dialogTitle;
+  });
+  // Confidence value
+  const confEl = document.getElementById('confidenceValue');
+  if (confEl && data.confidenceValues?.medium) confEl.textContent = data.confidenceValues.medium;
 };
-
 export { I18N, currentLang, setLanguage, t };

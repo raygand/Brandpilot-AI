@@ -158,14 +158,16 @@ function updateInputSummary() {
   $('#inputHint').textContent = state.cost >= state.price ? t('inputHintWarning') : t('inputHintNormal', { money: money(gross) });
 }
 
-const priorityContent = {
-  demand: [t('priorities.demand')[0], t('priorities.demand')[1]],
-  economics: [t('priorities.economics')[0], t('priorities.economics')[1]],
-  channel: [t('priorities.channel')[0], t('priorities.channel')[1]],
-  supply: [t('priorities.supply')[0], t('priorities.supply')[1]],
-  marketing: [t('priorities.marketing')[0], t('priorities.marketing')[1]],
-  risk: [t('priorities.risk')[0], t('priorities.risk')[1]]
-};
+function getPriorityContent() {
+  return {
+    demand: t('priorities.demand'),
+    economics: t('priorities.economics'),
+    channel: t('priorities.channel'),
+    supply: t('priorities.supply'),
+    marketing: t('priorities.marketing'),
+    risk: t('priorities.risk')
+  };
+}
 
 function renderReadiness() {
   const { score, metrics, confidence, grossMarginRate, budgetPerUnit } = analysis.readiness;
@@ -178,7 +180,7 @@ function renderReadiness() {
   $('#readinessStatus span').textContent = status[1];
 
   const weakest = [...metrics].sort((a, b) => (a.score / a.max) - (b.score / b.max))[0];
-  const [title, copy] = priorityContent[weakest.key];
+  const [title, copy] = getPriorityContent()[weakest.key] || ["", ""];
   $('#priorityTitle').textContent = title;
   $('#priorityCopy').textContent = copy;
   $('#metricBars').innerHTML = metrics.map(metric => `<div class="metric ${metric.key === weakest.key ? 'weak' : ''}"><span>${t('metricLabels.' + metric.key)}</span><b>${metric.score} / ${metric.max}</b><i style="--v:${(metric.score / metric.max) * 100}%"></i></div>`).join('');
@@ -567,6 +569,14 @@ function setupLanguageSwitcher() {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.lang;
       setLanguage(lang);
+      // Re-render dynamic content after language change (only if data exists)
+      if (analysis) {
+        try { renderReadiness(); } catch(e) { console.warn('renderReadiness i18n error:', e); }
+        try { renderScenarios(); } catch(e) { console.warn('renderScenarios i18n error:', e); }
+        try { renderBuyer(); } catch(e) { console.warn('renderBuyer i18n error:', e); }
+        try { renderRoadmap(); } catch(e) { console.warn('renderRoadmap i18n error:', e); }
+        try { renderReflectionSummary(); } catch(e) { console.warn('renderReflectionSummary i18n error:', e); }
+      }
       langBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
     });

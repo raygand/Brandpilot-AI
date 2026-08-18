@@ -13,13 +13,13 @@
     <aside class="rail" aria-label="ลำดับการจำลอง">
       <div class="mark" aria-label="Brandpilot AI">BP</div>
       <nav>
-        <button class="nav active" data-screen="0" aria-label="ภาพรวม" aria-current="step"><span>01</span><b>เริ่มต้น</b></button>
-        <button class="nav" data-screen="1" aria-label="กรอกข้อมูล"><span>02</span><b>ข้อมูล</b></button>
-        <button class="nav" data-screen="2" aria-label="ความพร้อม"><span>03</span><b>คะแนน</b></button>
-        <button class="nav" data-screen="3" aria-label="สถานการณ์"><span>04</span><b>ทางเลือก</b></button>
-        <button class="nav" data-screen="4" aria-label="ผู้ซื้อ"><span>05</span><b>Buyer</b></button>
-        <button class="nav" data-screen="5" aria-label="แผน 90 วัน"><span>06</span><b>Roadmap</b></button>
-        <button class="nav" data-screen="6" aria-label="Reflection"><span>07</span><b>ทบทวน</b></button>
+        <button class="nav active" data-screen="0" aria-label="ภาพรวม" aria-current="step"><span>01</span><b data-i18n="nav">เริ่มต้น</b></button>
+        <button class="nav" data-screen="1" aria-label="กรอกข้อมูล"><span>02</span><b data-i18n="nav">ข้อมูล</b></button>
+        <button class="nav" data-screen="2" aria-label="ความพร้อม"><span>03</span><b data-i18n="nav">คะแนน</b></button>
+        <button class="nav" data-screen="3" aria-label="สถานการณ์"><span>04</span><b data-i18n="nav">ทางเลือก</b></button>
+        <button class="nav" data-screen="4" aria-label="ผู้ซื้อ"><span>05</span><b data-i18n="nav">Buyer</b></button>
+        <button class="nav" data-screen="5" aria-label="แผน 90 วัน"><span>06</span><b data-i18n="nav">Roadmap</b></button>
+        <button class="nav" data-screen="6" aria-label="Reflection"><span>07</span><b data-i18n="nav">ทบทวน</b></button>
       </nav>
       <div class="rail-foot">AI<br/>LAB</div>
     </aside>
@@ -28,28 +28,28 @@
       <header class="topbar">
         <div class="brand"><strong>BRANDPILOT</strong><b>AI</b></div>
         <div class="progress" aria-label="ความคืบหน้า"><i id="progressBar"></i></div>
-        <div class="case-chip"><i></i><span id="caseChipLabel">Simulation case</span><strong>DR.MUSCLE</strong></div>
+        <div class="case-chip"><i></i><span id="caseChipLabel" data-i18n="caseChip">Simulation case</span><strong>DR.MUSCLE</strong></div>
         <div class="lang-switcher" id="langSwitcher" role="group" aria-label="Language selector">
           <button class="lang-btn active" data-lang="th" type="button">ไทย</button>
           <button class="lang-btn" data-lang="en" type="button">EN</button>
           <button class="lang-btn" data-lang="zh" type="button">中文</button>
         </div>
-        <button class="ghost top-reset" id="resetTop" type="button">เริ่มใหม่</button>
-        <button class="wow-btn" id="wowBtn" type="button">✨ WOW</button>
-        <div class="mode" id="modeLabel">LEARNING MODE</div>
+        <button class="ghost top-reset" id="resetTop" type="button" data-i18n="resetTop">เริ่มใหม่</button>
+        <button class="wow-btn" id="wowBtn" type="button" data-i18n="wowLabel">✨ WOW</button>
+        <div class="mode" id="modeLabel" data-i18n="mode">LEARNING MODE</div>
       </header>
 
       <section class="screen active" data-screen="0" aria-labelledby="heroTitle">
         <div class="hero-copy">
-          <p class="eyebrow">DECISION SIMULATION LAB</p>
+          <p class="eyebrow" data-i18n="heroEyebrow">DECISION SIMULATION LAB</p>
           <h1 id="heroTitle">ทดลองก่อนลงทุน<br/><em>เรียนรู้ก่อนเสี่ยงจริง</em></h1>
-          <p class="lead">เปลี่ยนข้อมูลสินค้าให้เป็นสถานการณ์จำลอง เพื่อฝึกคิดเรื่องราคา ช่องทาง โปรโมชั่น สต็อก และการนำเสนอ Buyer อย่างมีหลักฐาน</p>
-          <button class="primary" data-next type="button">เริ่มจำลองสถานการณ์</button>
-          <div class="guardrail"><span>HUMAN-IN-THE-LOOP</span> ระบบแสดงสมมติฐานและผลกระทบ ผู้ใช้เป็นผู้ตัดสินใจ</div>
+          <p class="lead" data-i18n="heroLead">เปลี่ยนข้อมูลสินค้าให้เป็นสถานการณ์จำลอง เพื่อฝึกคิดเรื่องราคา ช่องทาง โปรโมชั่น สต็อก และการนำเสนอ Buyer อย่างมีหลักฐาน</p>
+          <button class="primary" data-next type="button" data-i18n="heroStart">เริ่มจำลองสถานการณ์</button>
+          <div class="guardrail" data-i18n="guardrail"><span>HUMAN-IN-THE-LOOP</span> ระบบแสดงสมมติฐานและผลกระทบ ผู้ใช้เป็นผู้ตัดสินใจ</div>
           <div class="hero-proof" aria-label="คุณสมบัติของต้นแบบ">
-            <div><strong>7</strong><span>ขั้นตอนตัดสินใจ</span></div>
-            <div><strong>3</strong><span>Scenario เปรียบเทียบ</span></div>
-            <div><strong>1</strong><span>แผนพร้อมลงมือ</span></div>
+            <div><strong>7</strong><span data-i18n="heroProof">ขั้นตอนตัดสินใจ</span></div>
+            <div><strong>3</strong><span data-i18n="heroProof">Scenario เปรียบเทียบ</span></div>
+            <div><strong>1</strong><span data-i18n="heroProof">แผนพร้อมลงมือ</span></div>
           </div>
         </div>
         <div class="hero-visual" aria-label="ภาพผลิตภัณฑ์ตัวอย่าง DR.MUSCLE">
@@ -58,74 +58,74 @@
           <div class="signal-card s2"><span>SCENARIOS</span><strong>3</strong><small>paths</small></div>
           <div class="signal-card s3"><span>ACTION</span><strong>90</strong><small>days</small></div>
         </div>
-        <div class="disclaimer">กรณีศึกษาและตัวเลขทั้งหมดเป็นข้อมูลสมมติสำหรับการเรียนรู้ ไม่ใช่คำแนะนำการลงทุน</div>
+        <div class="disclaimer" data-i18n="disclaimer">กรณีศึกษาและตัวเลขทั้งหมดเป็นข้อมูลสมมติสำหรับการเรียนรู้ ไม่ใช่คำแนะนำการลงทุน</div>
       </section>
 
       <section class="screen" data-screen="1" aria-labelledby="inputTitle">
         <div class="section-head">
-          <div><p class="eyebrow">STEP 01 · PRODUCT INPUT</p><h2 id="inputTitle">เริ่มจากข้อมูลที่ตรวจสอบได้</h2></div>
-          <p>แก้ไขข้อมูลเพื่อดูผลลัพธ์ใหม่ทันที<br/>ช่องที่มีเครื่องหมาย * จำเป็นต้องกรอก</p>
+          <div><p class="eyebrow">STEP 01 · PRODUCT INPUT</p><h2 id="inputTitle" data-i18n="inputTitle">เริ่มจากข้อมูลที่ตรวจสอบได้</h2></div>
+          <p data-i18n="inputDesc">แก้ไขข้อมูลเพื่อดูผลลัพธ์ใหม่ทันที<br/>ช่องที่มีเครื่องหมาย * จำเป็นต้องกรอก</p>
         </div>
         <div class="input-layout">
           <div class="product-card">
             <img src="" data-product-image alt="DR.MUSCLE ตัวอย่างสินค้า" />
-            <div class="product-meta"><span>FICTIONAL CASE</span><h3>DR.MUSCLE</h3><p>Ready-to-drink protein beverage<br/>330 mL · Protein 25 g</p></div>
-            <div class="live-economics"><span>กำไรขั้นต้นก่อนค่าช่องทาง</span><strong id="liveGross">฿48.00</strong><small id="liveMargin">60.8% ของราคาขาย</small></div>
+            <div class="product-meta"><span>FICTIONAL CASE</span><h3>DR.MUSCLE</h3><p data-i18n="productMeta">Ready-to-drink protein beverage<br/>330 mL · Protein 25 g</p></div>
+            <div class="live-economics"><span data-i18n="liveEconLabel">กำไรขั้นต้นก่อนค่าช่องทาง</span><strong id="liveGross">฿48.00</strong><small id="liveMargin" data-i18n="liveMarginSuffix">60.8% ของราคาขาย</small></div>
           </div>
           <form class="form-grid" id="productForm" novalidate>
-            <div class="control"><label for="price">ราคาขายปลีก *</label><div class="field"><input id="price" name="price" inputmode="decimal" value="79" aria-describedby="priceUnit"/><span id="priceUnit">บาท</span></div></div>
-            <div class="control"><label for="cost">ต้นทุนต่อหน่วย *</label><div class="field"><input id="cost" name="cost" inputmode="decimal" value="31" aria-describedby="costUnit"/><span id="costUnit">บาท</span></div></div>
-            <div class="control"><label for="budget">งบเปิดตัว *</label><div class="field"><input id="budget" name="budget" inputmode="numeric" value="180,000" aria-describedby="budgetUnit"/><span id="budgetUnit">บาท</span></div></div>
-            <div class="control"><label for="stock">สต็อกเริ่มต้น *</label><div class="field"><input id="stock" name="stock" inputmode="numeric" value="6,000" aria-describedby="stockUnit"/><span id="stockUnit">หน่วย</span></div></div>
-            <div class="control"><label for="channel">ช่องทางที่สนใจ</label><div class="field select-field"><select id="channel" name="channel"><option value="online">Online Test</option><option value="balanced" selected>Online + Selected Retail</option><option value="modern">Modern Trade Rollout</option></select></div></div>
-            <div class="control"><label for="discount">ส่วนลดสูงสุดที่รับได้ *</label><div class="field"><input id="discount" name="discount" inputmode="decimal" value="15" aria-describedby="discountUnit"/><span id="discountUnit">%</span></div></div>
-            <div class="control"><label for="evidence">หลักฐานความต้องการลูกค้า</label><div class="field select-field"><select id="evidence" name="evidence"><option value="idea">มีเพียงสมมติฐาน</option><option value="interviews" selected>มีผลสัมภาษณ์ลูกค้า</option><option value="pilot">มีข้อมูล Paid Pilot</option></select></div></div>
-            <div class="control"><label for="leadTime">Lead time การผลิต *</label><div class="field"><input id="leadTime" name="leadTime" inputmode="numeric" value="30" aria-describedby="leadUnit"/><span id="leadUnit">วัน</span></div></div>
+            <div class="control"><label for="price" data-i18n="formLabels.price">ราคาขายปลีก *</label><div class="field"><input id="price" name="price" inputmode="decimal" value="79" aria-describedby="priceUnit"/><span id="priceUnit" data-i18n="formUnits.price">บาท</span></div></div>
+            <div class="control"><label for="cost" data-i18n="formLabels.cost">ต้นทุนต่อหน่วย *</label><div class="field"><input id="cost" name="cost" inputmode="decimal" value="31" aria-describedby="costUnit"/><span id="costUnit" data-i18n="formUnits.price">บาท</span></div></div>
+            <div class="control"><label for="budget" data-i18n="formLabels.budget">งบเปิดตัว *</label><div class="field"><input id="budget" name="budget" inputmode="numeric" value="180,000" aria-describedby="budgetUnit"/><span id="budgetUnit" data-i18n="formUnits.price">บาท</span></div></div>
+            <div class="control"><label for="stock" data-i18n="formLabels.stock">สต็อกเริ่มต้น *</label><div class="field"><input id="stock" name="stock" inputmode="numeric" value="6,000" aria-describedby="stockUnit"/><span id="stockUnit" data-i18n="formUnits.stock">หน่วย</span></div></div>
+            <div class="control"><label for="channel" data-i18n="formLabels.channel">ช่องทางที่สนใจ</label><div class="field select-field"><select id="channel" name="channel"><option value="online" data-i18n="channelOptions.online">Online Test</option><option value="balanced" selected data-i18n="channelOptions.balanced">Online + Selected Retail</option><option value="modern" data-i18n="channelOptions.modern">Modern Trade Rollout</option></select></div></div>
+            <div class="control"><label for="discount" data-i18n="formLabels.discount">ส่วนลดสูงสุดที่รับได้ *</label><div class="field"><input id="discount" name="discount" inputmode="decimal" value="15" aria-describedby="discountUnit"/><span id="discountUnit" data-i18n="formUnits.discount">%</span></div></div>
+            <div class="control"><label for="evidence" data-i18n="formLabels.evidence">หลักฐานความต้องการลูกค้า</label><div class="field select-field"><select id="evidence" name="evidence"><option value="idea" data-i18n="evidenceOptions.idea">มีเพียงสมมติฐาน</option><option value="interviews" selected data-i18n="evidenceOptions.interviews">มีผลสัมภาษณ์ลูกค้า</option><option value="pilot" data-i18n="evidenceOptions.pilot">มีข้อมูล Paid Pilot</option></select></div></div>
+            <div class="control"><label for="leadTime" data-i18n="formLabels.leadTime">Lead time การผลิต *</label><div class="field"><input id="leadTime" name="leadTime" inputmode="numeric" value="30" aria-describedby="leadUnit"/><span id="leadUnit" data-i18n="formUnits.leadTime">วัน</span></div></div>
             <p class="form-error" id="formError" role="alert"></p>
           </form>
         </div>
-        <div class="actionbar"><p><b>Transparency check</b><span id="inputHint">ระบบจะแสดงสูตรและเตือนเมื่อข้อมูลยังไม่สมเหตุผล</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" id="analyze" type="button">วิเคราะห์ความพร้อม</button></div></div>
+        <div class="actionbar"><p><b>Transparency check</b><span id="inputHint">ระบบจะแสดงสูตรและเตือนเมื่อข้อมูลยังไม่สมเหตุผล</span></p><div class="actions"><button class="ghost" data-back type="button" data-i18n="backBtn">ย้อนกลับ</button><button class="primary" id="analyze" type="button" data-i18n="analyzeBtn">วิเคราะห์ความพร้อม</button></div></div>
       </section>
 
       <section class="screen" data-screen="2" aria-labelledby="readinessTitle">
         <div class="section-head">
-          <div><p class="eyebrow">STEP 02 · BRAND READINESS</p><h2 id="readinessTitle">คะแนน <span id="scoreHeadline">64</span> ชี้ว่าควรทดสอบอะไรต่อ</h2></div>
+          <div><p class="eyebrow">STEP 02 · BRAND READINESS</p><h2 id="readinessTitle" data-i18n="readinessTitle">คะแนน <span id="scoreHeadline">64</span> ชี้ว่าควรทดสอบอะไรต่อ</h2></div>
           <div class="status amber" id="readinessStatus"><i></i><span>NEEDS VALIDATION</span></div>
         </div>
         <div class="readiness-layout">
           <div class="score-panel">
-            <div class="score-ring" id="scoreRing"><div><strong id="scoreValue">64</strong><span>/ 100</span><small>READINESS SCORE</small></div></div>
-            <div class="confidence"><span>ความเชื่อมั่นของข้อมูล</span><strong id="confidenceLabel">ปานกลาง</strong></div>
+            <div class="score-ring" id="scoreRing"><div><strong id="scoreValue">64</strong><span data-i18n="charCount">/ 100</span><small>READINESS SCORE</small></div></div>
+            <div class="confidence"><span data-i18n="confidenceLabel">ความเชื่อมั่นของข้อมูล</span><strong id="confidenceValue" data-i18n="confidenceValues.medium">ปานกลาง</strong></div>
           </div>
           <div class="bars" id="metricBars" aria-label="องค์ประกอบคะแนนความพร้อม"></div>
           <div class="priority">
             <p class="eyebrow">NEXT BEST TEST</p>
-            <h3 id="priorityTitle">พิสูจน์การซื้อซ้ำ<br/>ก่อนเพิ่มสต็อก</h3>
-            <p id="priorityCopy">ทดลองกับกลุ่มเป้าหมายขนาดเล็ก เก็บอัตราซื้อซ้ำ และทดสอบราคา 2 ระดับ</p>
+            <h3 id="priorityTitle" data-i18n="nextBestTest">พิสูจน์การซื้อซ้ำ<br/>ก่อนเพิ่มสต็อก</h3>
+            <p id="priorityCopy" data-i18n="priorities.demand">ทดลองกับกลุ่มเป้าหมายขนาดเล็ก เก็บอัตราซื้อซ้ำ และทดสอบราคา 2 ระดับ</p>
             <div class="assumption"><span>ASSUMPTION</span><b>คะแนนคำนวณจากข้อมูลที่ผู้ใช้กรอกและกติกาจำลอง ไม่ใช่คำรับรองความสำเร็จ</b></div>
-            <button class="formula-toggle" id="formulaToggle" type="button" aria-expanded="false">ดูวิธีคิดคะแนน</button>
-            <div class="formula-details" id="formulaDetails" hidden>Readiness Score = ผลรวม 6 มิติ: Demand 20, Economics 20, Channel 15, Supply 15, Marketing 15 และ Risk 15 คะแนน</div>
+            <button class="formula-toggle" id="formulaToggle" type="button" aria-expanded="false" data-i18n="formulaToggleOpen">ดูวิธีคิดคะแนน</button>
+            <div class="formula-details" id="formulaDetails" hidden data-i18n="formulaDetails">Readiness Score = ผลรวม 6 มิติ: Demand 20, Economics 20, Channel 15, Supply 15, Marketing 15 และ Risk 15 คะแนน</div>
           </div>
         </div>
         <div class="warning-list" id="warningList" aria-live="polite"></div>
-        <div class="actionbar"><p><b>Reflection prompt</b> จุดอ่อนข้อใดเปลี่ยนการตัดสินใจของคุณมากที่สุด?</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button">เปรียบเทียบ 3 ทางเลือก</button></div></div>
+        <div class="actionbar"><p><b>Reflection prompt</b> จุดอ่อนข้อใดเปลี่ยนการตัดสินใจของคุณมากที่สุด?</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextScenarios">เปรียบเทียบ 3 ทางเลือก</button></div></div>
       </section>
 
       <section class="screen" data-screen="3" aria-labelledby="scenarioTitle">
         <div class="section-head">
-          <div><p class="eyebrow">STEP 03 · SCENARIO SIMULATOR</p><h2 id="scenarioTitle">ยอดขายสูงขึ้น ไม่ได้แปลว่าความเสี่ยงต่ำลง</h2></div>
-          <p>เปลี่ยนข้อมูลหน้าก่อนหน้าได้ตลอดเวลา<br/>หน่วย: บาท เว้นแต่ระบุเป็นอย่างอื่น</p>
+          <div><p class="eyebrow">STEP 03 · SCENARIO SIMULATOR</p><h2 id="scenarioTitle" data-i18n="scenarioTitle">ยอดขายสูงขึ้น ไม่ได้แปลว่าความเสี่ยงต่ำลง</h2></div>
+          <p data-i18n="scenarioDesc">เปลี่ยนข้อมูลหน้าก่อนหน้าได้ตลอดเวลา<br/>หน่วย: บาท เว้นแต่ระบุเป็นอย่างอื่น</p>
         </div>
         <div class="scenario-grid" id="scenarioGrid" aria-label="สามสถานการณ์จำลอง"></div>
-        <div class="formula"><b>สูตรหลัก</b><span>Contribution/หน่วย = ราคาหลังส่วนลดและ GP − ต้นทุน − ค่าใช้จ่ายผันแปรช่องทาง</span><em>Simulation assumptions</em></div>
-        <div class="decision-strip"><div><span>YOUR DECISION</span><strong id="decisionText">Balanced Pilot</strong><small id="decisionReason">สมดุลระหว่างการเรียนรู้ เงินลงทุน และความเสี่ยง</small></div><button class="ghost" id="whyRecommended" type="button">ดูเหตุผลแนะนำ</button></div>
-        <div class="actionbar"><p><b>Decision rule</b><span id="decisionRule">เลือกทางที่ Contribution เป็นบวกและลงทุนไม่เกินความเสียหายที่ยอมรับได้</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button">ซ้อมตอบ Buyer</button></div></div>
+        <div class="formula"><b data-i18n="formulaText">สูตรหลัก</b><span data-i18n="formulaText">Contribution/หน่วย = ราคาหลังส่วนลดและ GP − ต้นทุน − ค่าใช้จ่ายผันแปรช่องทาง</span><em data-i18n="formulaNote">Simulation assumptions</em></div>
+        <div class="decision-strip"><div><span data-i18n="decisionText">YOUR DECISION</span><strong id="decisionText">Balanced Pilot</strong><small id="decisionReason" data-i18n="decisionReasons.balanced">สมดุลระหว่างการเรียนรู้ เงินลงทุน และความเสี่ยง</small></div><button class="ghost" id="whyRecommended" type="button" data-i18n="whyRecommended">ดูเหตุผลแนะนำ</button></div>
+        <div class="actionbar"><p><b>Decision rule</b><span id="decisionRule" data-i18n="decisionRuleText">เลือกทางที่ Contribution เป็นบวกและลงทุนไม่เกินความเสียหายที่ยอมรับได้</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextBuyer">ซ้อมตอบ Buyer</button></div></div>
       </section>
 
       <section class="screen" data-screen="4" aria-labelledby="buyerTitle">
         <div class="section-head">
-          <div><p class="eyebrow">STEP 04 · VIRTUAL BUYER CHALLENGE</p><h2 id="buyerTitle">คำตอบที่ดีต้องมีหลักฐาน ไม่ใช่เพียงความมั่นใจ</h2></div>
-          <div class="round" id="roundLabel">QUESTION 1 / 5</div>
+          <div><p class="eyebrow">STEP 04 · VIRTUAL BUYER CHALLENGE</p><h2 id="buyerTitle" data-i18n="buyerTitle">คำตอบที่ดีต้องมีหลักฐาน ไม่ใช่เพียงความมั่นใจ</h2></div>
+          <div class="round" id="roundLabel" data-i18n="questionNavLabel">QUESTION 1 / 5</div>
         </div>
         <div class="buyer-layout">
           <div class="buyer-panel">
@@ -135,18 +135,18 @@
             <div class="question-nav" id="questionNav" aria-label="เลือกคำถาม"></div>
           </div>
           <div class="answer-panel">
-            <label for="buyerAnswer">YOUR RESPONSE</label>
+            <label for="buyerAnswer" data-i18n="buyerResponse">YOUR RESPONSE</label>
             <textarea id="buyerAnswer" placeholder="พิมพ์คำตอบของคุณ โดยใช้ตัวเลขและเกณฑ์ตัดสินใจ..."></textarea>
-            <div class="answer-tools"><small id="answerCount">0 ตัวอักษร</small><button class="evaluate" id="evaluate" type="button">ประเมินคำตอบ</button></div>
+            <div class="answer-tools"><small id="answerCount" data-i18n="charCount">0 ตัวอักษร</small><button class="evaluate" id="evaluate" type="button" data-i18n="evaluateBtn">ประเมินคำตอบ</button></div>
             <div class="feedback" id="feedback" aria-live="polite">
               <div class="feedback-score"><strong id="buyerScore">—</strong><span>/ 100</span></div>
-              <div><b>จุดแข็ง</b><p id="buyerStrength">พิมพ์คำตอบแล้วกดประเมิน</p><b>ควรเพิ่ม</b><p id="buyerImprove">ระบบจะประเมินด้วย Rubric ที่เปิดเผยได้</p></div>
+              <div><b data-i18n="strengthLabel">จุดแข็ง</b><p id="buyerStrength" data-i18n="buyerStrengthDefault">พิมพ์คำตอบแล้วกดประเมิน</p><b data-i18n="improveLabel">ควรเพิ่ม</b><p id="buyerImprove" data-i18n="buyerImproveDefault">ระบบจะประเมินด้วย Rubric ที่เปิดเผยได้</p></div>
             </div>
           </div>
         </div>
         <div class="rubric" id="rubric" aria-label="คะแนนตามเกณฑ์"></div>
-        <div class="coach-note"><b>Prototype note</b> การประเมินหน้านี้ใช้ Rubric-based evaluator ภายในเบราว์เซอร์ ไม่มีการส่งข้อความไปยังบริการภายนอก</div>
-        <div class="actionbar"><p><b>Buyer average</b><span id="buyerAverage">ยังไม่มีคะแนน</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button">สร้างแผน 90 วัน</button></div></div>
+        <div class="coach-note"><b>Prototype note</b> <span data-i18n="coachNote">การประเมินหน้านี้ใช้ Rubric-based evaluator ภายในเบราว์เซอร์ ไม่มีการส่งข้อความไปยังบริการภายนอก</span>ใช้ Rubric-based evaluator ภายในเบราว์เซอร์ ไม่มีการส่งข้อความไปยังบริการภายนอก</div>
+        <div class="actionbar"><p><b>Buyer average</b><span id="buyerAverage" data-i18n="buyerAverageNone">ยังไม่มีคะแนน</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextRoadmap">สร้างแผน 90 วัน</button></div></div>
       </section>
 
       <section class="screen" data-screen="5" aria-labelledby="roadmapTitle">
@@ -155,28 +155,28 @@
           <div class="status aqua"><i></i><span id="roadmapScenario">BALANCED PILOT</span></div>
         </div>
         <div class="roadmap" id="roadmap"></div>
-        <div class="roadmap-summary"><div><span>งบจำลอง</span><strong id="roadmapBudget">฿0</strong></div><div><span>Contribution เป้าหมาย</span><strong id="roadmapContribution">฿0/หน่วย</strong></div><div><span>จุดตัดสินใจ</span><strong id="roadmapGate">Pilot / Iterate / Stop</strong></div></div>
-        <div class="actionbar"><p><b>Effectuation</b> ลงทุนเท่าที่รับความเสียหายได้ และขยายเมื่อหลักฐานเพิ่มขึ้น</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button">สะท้อนการเรียนรู้</button></div></div>
+        <div class="roadmap-summary"><div><span data-i18n="roadmapKeys.budget">งบจำลอง</span><strong id="roadmapBudget">฿0</strong></div><div><span data-i18n="roadmapKeys.contribution">Contribution เป้าหมาย</span><strong id="roadmapContribution">฿0/หน่วย</strong></div><div><span data-i18n="roadmapKeys.gate">จุดตัดสินใจ</span><strong id="roadmapGate">Pilot / Iterate / Stop</strong></div></div>
+        <div class="actionbar"><p><b>Effectuation</b> <span data-i18n="effectuation">ลงทุนเท่าที่รับความเสียหายได้ และขยายเมื่อหลักฐานเพิ่มขึ้น</span></p>ได้ และขยายเมื่อหลักฐานเพิ่มขึ้น</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextReflection">สะท้อนการเรียนรู้</button></div></div>
       </section>
 
       <section class="screen" data-screen="6" aria-labelledby="reflectionTitle">
         <div class="reflection-layout">
-          <div class="reflection-copy"><p class="eyebrow">STEP 06 · LEARNING REFLECTION</p><h2 id="reflectionTitle">AI จบเมื่อผู้เรียน<br/>อธิบายเหตุผลได้</h2><p>การสะท้อนผลเปลี่ยน “คำตอบจากระบบ” ให้เป็นความรู้ที่ผู้เรียนสร้างขึ้นเอง</p><div class="kolb"><span>EXPERIENCE</span><span>REFLECT</span><span>CONCEPTUALIZE</span><span>EXPERIMENT</span></div><div class="session-summary"><span>SCENARIO</span><strong id="reflectionScenario">Balanced Pilot</strong><small id="reflectionScore">Readiness 64/100</small></div></div>
+          <div class="reflection-copy"><p class="eyebrow">STEP 06 · LEARNING REFLECTION</p><h2 id="reflectionTitle" data-i18n="reflectionTitle">AI จบเมื่อผู้เรียน<br/>อธิบายเหตุผลได้</h2><p data-i18n="reflectionDesc">การสะท้อนผลเปลี่ยน “คำตอบจากระบบ” ให้เป็นความรู้ที่ผู้เรียนสร้างขึ้นเอง</p><div class="kolb"><span>EXPERIENCE</span><span>REFLECT</span><span>CONCEPTUALIZE</span><span>EXPERIMENT</span></div><div class="session-summary"><span>SCENARIO</span><strong id="reflectionScenario">Balanced Pilot</strong><small id="reflectionScore">Readiness 64/100</small></div></div>
           <form class="reflection-form" id="reflectionForm">
-            <label for="reflection1">1. คุณเลือกกลยุทธ์ใด และเพราะอะไร?</label><textarea id="reflection1" placeholder="อธิบายเหตุผลและหลักฐานที่ใช้ตัดสินใจ"></textarea>
+            <label for="reflection1" data-i18n="reflectionQ1">1. คุณเลือกกลยุทธ์ใด และเพราะอะไร?</label><textarea id="reflection1" placeholder="อธิบายเหตุผลและหลักฐานที่ใช้ตัดสินใจ"></textarea>
             <label for="reflection2">2. ผลลัพธ์ใดต่างจากที่คาด?</label><textarea id="reflection2" placeholder="ระบุสิ่งที่ได้เรียนรู้จากตัวเลขหรือ Scenario"></textarea>
-            <label for="reflection3">3. หากทดลองใหม่ จะเปลี่ยนอะไร?</label><textarea id="reflection3" placeholder="กำหนดสมมติฐานหรือการทดสอบครั้งถัดไป"></textarea>
-            <div class="save-row"><button class="primary" id="saveReflection" type="button">บันทึก Reflection</button><button class="ghost" id="downloadSummary" type="button">ดาวน์โหลดสรุป</button></div>
-            <div class="complete" id="completeState" aria-live="polite"><div><b>LEARNING LOOP</b><span>ข้อมูลจะบันทึกเฉพาะในเบราว์เซอร์เครื่องนี้</span></div></div>
+            <label for="reflection3" data-i18n="reflectionQ3">3. หากทดลองใหม่ จะเปลี่ยนอะไร?</label><textarea id="reflection3" placeholder="กำหนดสมมติฐานหรือการทดสอบครั้งถัดไป"></textarea>
+            <div class="save-row"><button class="primary" id="saveReflection" type="button" data-i18n="saveReflection">บันทึก Reflection</button><button class="ghost" id="downloadSummary" type="button" data-i18n="downloadSummary">ดาวน์โหลดสรุป</button></div>
+            <div class="complete" id="completeState" aria-live="polite"><div><b>LEARNING LOOP</b><span data-i18n="completeText">ข้อมูลจะบันทึกเฉพาะในเบราว์เซอร์เครื่องนี้</span></div></div>
           </form>
         </div>
-        <div class="actionbar"><p><b>Privacy</b> Prototype นี้ไม่มี Backend และไม่ส่งข้อมูลออกจากอุปกรณ์</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" id="restart" type="button">เริ่มรอบจำลองใหม่</button></div></div>
+        <div class="actionbar"><p><b>Privacy</b> <span data-i18n="privacy">Prototype นี้ไม่มี Backend และไม่ส่งข้อมูลออกจากอุปกรณ์</span></p> และไม่ส่งข้อมูลออกจากอุปกรณ์</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" id="restart" type="button" data-i18n="restartBtn">เริ่มรอบจำลองใหม่</button></div></div>
       </section>
     </section>
   </main>
 
   <dialog id="reasonDialog" class="dialog">
-    <div><p class="eyebrow">RECOMMENDATION LOGIC</p><h3>เหตุผลที่ระบบแนะนำ Scenario นี้</h3><p id="reasonDialogCopy"></p><button class="primary" id="closeDialog" type="button">เข้าใจแล้ว</button></div>
+    <div><p class="eyebrow">RECOMMENDATION LOGIC</p><h3 data-i18n="dialogTitle">เหตุผลที่ระบบแนะนำ Scenario นี้</h3><p id="reasonDialogCopy"></p><button class="primary" id="closeDialog" type="button" data-i18n="dialogClose">เข้าใจแล้ว</button></div>
   </dialog>
 
   <script type="module" src="app.js"></script>
