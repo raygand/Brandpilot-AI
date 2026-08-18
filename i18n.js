@@ -12,6 +12,15 @@ const I18N = {
     heroTitle: 'ทดลองก่อนลงทุน<br/><em>เรียนรู้ก่อนเสี่ยงจริง</em>',
     heroLead: 'เปลี่ยนข้อมูลสินค้าให้เป็นสถานการณ์จำลอง เพื่อฝึกคิดเรื่องราคา ช่องทาง โปรโมชั่น สต็อก และการนำเสนอ Buyer อย่างมีหลักฐาน',
     heroStart: 'เริ่มจำลองสถานการณ์',
+    reflectionPlaceholder: 'ระบุสิ่งที่ได้เรียนรู้จากตัวเลขหรือการทดลอง...',
+    reflectionQ2: '2. ผลลัพธ์ใดต่างจากที่คาด?',
+    roadmapTitle: 'เปลี่ยนข้อสังเกตให้เป็นการทดลองที่ลงมือได้',
+    buyerAnswerPlaceholder: 'พิมพ์คำตอบของคุณ โดยใช้ตัวเลขและเกณฑ์ตัดสินใจ...',
+    buyerPrompt: 'ตอบด้วยปัญหาลูกค้า หลักฐาน และความแตกต่างที่ตรวจสอบได้',
+    buyerQuestion: 'เหตุใดสินค้านี้จึงควรได้พื้นที่ขาย?',
+    reflectionPromptText: 'จุดอ่อนข้อใดเปลี่ยนการตัดสินใจของคุณมากที่สุด?',
+    assumptionText: 'คะแนนคำนวณจากข้อมูลที่ผู้ใช้กรอกและกติกาจำลอง ไม่ใช่คำรับรองความสำเร็จ',
+    inputHint: 'ระบบจะแสดงสูตรและเตือนเมื่อข้อมูลยังไม่สมเหตุผล',
     guardrail: 'ระบบแสดงสมมติฐานและผลกระทบ ผู้ใช้เป็นผู้ตัดสินใจ',
     heroProof: ['ขั้นตอนตัดสินใจ', 'Scenario เปรียบเทียบ', 'แผนพร้อมลงมือ'],
     disclaimer: 'กรณีศึกษาและตัวเลขทั้งหมดเป็นข้อมูลสมมติสำหรับการเรียนรู้ ไม่ใช่คำแนะนำการลงทุน',
@@ -211,6 +220,11 @@ const I18N = {
     heroTitle: 'Test before invest<br/><em>Learn before you risk</em>',
     heroLead: 'Turn product data into simulated scenarios to practice thinking about pricing, channels, promotions, stock, and Buyer pitches with evidence',
     heroStart: 'Start Simulation',
+    reflectionPlaceholder: 'Note what you learned from the numbers or experiments...',
+    buyerAnswerPlaceholder: 'Type your answer using numbers and decision criteria...',
+    buyerPrompt: 'Answer with customer problems, evidence, and verifiable differentiation.',
+    buyerQuestion: 'Why should this product get shelf space?',
+    reflectionPromptText: 'Which weakness would most change your decision?',
     guardrail: 'System shows assumptions and impact — the user makes the final decision',
     heroProof: ['Decision steps', 'Scenarios compared', 'Ready-to-execute plan'],
     disclaimer: 'All case studies and figures are fictional data for learning purposes only. Not investment advice.',
@@ -398,6 +412,12 @@ const I18N = {
     heroTitle: '投资前先测试<br/><em>冒险前先学习</em>',
     heroLead: '将产品数据转化为模拟场景，练习有证据支撑的定价、渠道、促销、库存和买家提案思维',
     heroStart: '开始模拟',
+    reflectionPlaceholder: '记录你从数字或实验中学到的东西...',
+    buyerAnswerPlaceholder: '用数字和决策标准输入你的答案...',
+    buyerPrompt: '用客户问题、证据和可验证的差异化来回答',
+    buyerQuestion: '为什么这个产品应该获得货架空间？',
+    reflectionPromptText: '哪个弱点最会改变你的决定？',
+    heroTitle: '投资前先测试<br/><em>冒险前先学习</em>',
     guardrail: '系统展示假设和影响 — 用户做最终决策',
     heroProof: ['决策步骤', '情景对比', '可执行计划'],
     disclaimer: '所有案例和数据均为学习用途的虚构数据，不构成投资建议。',
@@ -662,8 +682,23 @@ window.applyTranslations = function applyTranslations() {
     }
   });
 
+  // === 1b. Process data-i18n-placeholder attributes ===
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    try {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (!key) return;
+      let value = data;
+      for (const part of key.split('.')) {
+        value = value?.[part];
+        if (value === undefined) break;
+      }
+      if (value !== undefined && value !== null && typeof value === 'string') {
+        el.placeholder = value;
+      }
+    } catch (e) { console.warn('placeholder error:', e); }
+  });
   // === 2. Handle innerHTML elements (preserve <br>, <em>, <b>) ===
-  const innerHTMLIds = ['heroTitle', 'reflectionTitle', 'readinessTitle', 'scenarioTitle', 'buyerTitle', 'roadmapTitle', 'productMeta', 'inputDesc'];
+  const innerHTMLIds = ['heroTitle', 'reflectionTitle', 'readinessTitle', 'scenarioTitle', 'buyerTitle', 'roadmapTitle', 'productMeta', 'inputDesc', 'inputHint', 'assumptionText', 'reflectionPromptText', 'buyerQuestion', 'buyerPrompt'];
   innerHTMLIds.forEach(id => {
     const el = document.getElementById(id);
     if (el && data[id]) {

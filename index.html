@@ -42,7 +42,7 @@
       <section class="screen active" data-screen="0" aria-labelledby="heroTitle">
         <div class="hero-copy">
           <p class="eyebrow" data-i18n="heroEyebrow">DECISION SIMULATION LAB</p>
-          <h1 id="heroTitle">ทดลองก่อนลงทุน<br/><em>เรียนรู้ก่อนเสี่ยงจริง</em></h1>
+          <h1 id="heroTitle" data-i18n="heroTitle">ทดลองก่อนลงทุน<br/><em>เรียนรู้ก่อนเสี่ยงจริง</em></h1>
           <p class="lead" data-i18n="heroLead">เปลี่ยนข้อมูลสินค้าให้เป็นสถานการณ์จำลอง เพื่อฝึกคิดเรื่องราคา ช่องทาง โปรโมชั่น สต็อก และการนำเสนอ Buyer อย่างมีหลักฐาน</p>
           <button class="primary" data-next type="button" data-i18n="heroStart">เริ่มจำลองสถานการณ์</button>
           <div class="guardrail" data-i18n="guardrail"><span>HUMAN-IN-THE-LOOP</span> ระบบแสดงสมมติฐานและผลกระทบ ผู้ใช้เป็นผู้ตัดสินใจ</div>
@@ -84,7 +84,7 @@
             <p class="form-error" id="formError" role="alert"></p>
           </form>
         </div>
-        <div class="actionbar"><p><b>Transparency check</b><span id="inputHint">ระบบจะแสดงสูตรและเตือนเมื่อข้อมูลยังไม่สมเหตุผล</span></p><div class="actions"><button class="ghost" data-back type="button" data-i18n="backBtn">ย้อนกลับ</button><button class="primary" id="analyze" type="button" data-i18n="analyzeBtn">วิเคราะห์ความพร้อม</button></div></div>
+        <div class="actionbar"><p><b>Transparency check</b><span id="inputHint" data-i18n="inputHint">ระบบจะแสดงสูตรและเตือนเมื่อข้อมูลยังไม่สมเหตุผล</span></p><div class="actions"><button class="ghost" data-back type="button" data-i18n="backBtn">ย้อนกลับ</button><button class="primary" id="analyze" type="button" data-i18n="analyzeBtn">วิเคราะห์ความพร้อม</button></div></div>
       </section>
 
       <section class="screen" data-screen="2" aria-labelledby="readinessTitle">
@@ -102,13 +102,13 @@
             <p class="eyebrow">NEXT BEST TEST</p>
             <h3 id="priorityTitle" data-i18n="nextBestTest">พิสูจน์การซื้อซ้ำ<br/>ก่อนเพิ่มสต็อก</h3>
             <p id="priorityCopy" data-i18n="priorities.demand">ทดลองกับกลุ่มเป้าหมายขนาดเล็ก เก็บอัตราซื้อซ้ำ และทดสอบราคา 2 ระดับ</p>
-            <div class="assumption"><span>ASSUMPTION</span><b>คะแนนคำนวณจากข้อมูลที่ผู้ใช้กรอกและกติกาจำลอง ไม่ใช่คำรับรองความสำเร็จ</b></div>
+            <div class="assumption"><span>ASSUMPTION</span><b data-i18n="assumptionText">คะแนนคำนวณจากข้อมูลที่ผู้ใช้กรอกและกติกาจำลอง ไม่ใช่คำรับรองความสำเร็จ</b></div>
             <button class="formula-toggle" id="formulaToggle" type="button" aria-expanded="false" data-i18n="formulaToggleOpen">ดูวิธีคิดคะแนน</button>
             <div class="formula-details" id="formulaDetails" hidden data-i18n="formulaDetails">Readiness Score = ผลรวม 6 มิติ: Demand 20, Economics 20, Channel 15, Supply 15, Marketing 15 และ Risk 15 คะแนน</div>
           </div>
         </div>
         <div class="warning-list" id="warningList" aria-live="polite"></div>
-        <div class="actionbar"><p><b>Reflection prompt</b> จุดอ่อนข้อใดเปลี่ยนการตัดสินใจของคุณมากที่สุด?</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextScenarios">เปรียบเทียบ 3 ทางเลือก</button></div></div>
+        <div class="actionbar"><p><b>Reflection prompt</b> <span data-i18n="reflectionPromptText">จุดอ่อนข้อใดเปลี่ยนการตัดสินใจของคุณมากที่สุด?</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextScenarios">เปรียบเทียบ 3 ทางเลือก</button></div></div>
       </section>
 
       <section class="screen" data-screen="3" aria-labelledby="scenarioTitle">
@@ -130,13 +130,13 @@
         <div class="buyer-layout">
           <div class="buyer-panel">
             <div class="avatar" aria-hidden="true">B</div><span>VIRTUAL BUYER</span>
-            <h3 id="buyerQuestion">เหตุใดสินค้านี้จึงควรได้พื้นที่ขาย?</h3>
-            <p id="buyerPrompt">ตอบด้วยปัญหาลูกค้า หลักฐาน และความแตกต่างที่ตรวจสอบได้</p>
+            <h3 id="buyerQuestion" data-i18n="buyerQuestion">เหตุใดสินค้านี้จึงควรได้พื้นที่ขาย?</h3>
+            <p id="buyerPrompt" data-i18n="buyerPrompt">ตอบด้วยปัญหาลูกค้า หลักฐาน และความแตกต่างที่ตรวจสอบได้</p>
             <div class="question-nav" id="questionNav" aria-label="เลือกคำถาม"></div>
           </div>
           <div class="answer-panel">
             <label for="buyerAnswer" data-i18n="buyerResponse">YOUR RESPONSE</label>
-            <textarea id="buyerAnswer" placeholder="พิมพ์คำตอบของคุณ โดยใช้ตัวเลขและเกณฑ์ตัดสินใจ..."></textarea>
+            <textarea id="buyerAnswer" data-i18n-placeholder="buyerAnswerPlaceholder" placeholder="พิมพ์คำตอบของคุณ โดยใช้ตัวเลขและเกณฑ์ตัดสินใจ..."></textarea>
             <div class="answer-tools"><small id="answerCount" data-i18n="charCount">0 ตัวอักษร</small><button class="evaluate" id="evaluate" type="button" data-i18n="evaluateBtn">ประเมินคำตอบ</button></div>
             <div class="feedback" id="feedback" aria-live="polite">
               <div class="feedback-score"><strong id="buyerScore">—</strong><span>/ 100</span></div>
@@ -151,7 +151,7 @@
 
       <section class="screen" data-screen="5" aria-labelledby="roadmapTitle">
         <div class="section-head">
-          <div><p class="eyebrow">STEP 05 · 30–60–90 DAY ROADMAP</p><h2 id="roadmapTitle">เปลี่ยนข้อสังเกตให้เป็นการทดลองที่ลงมือได้</h2></div>
+          <div><p class="eyebrow">STEP 05 · 30–60–90 DAY ROADMAP</p><h2 id="roadmapTitle" data-i18n="roadmapTitle">เปลี่ยนข้อสังเกตให้เป็นการทดลองที่ลงมือได้</h2></div>
           <div class="status aqua"><i></i><span id="roadmapScenario">BALANCED PILOT</span></div>
         </div>
         <div class="roadmap" id="roadmap"></div>
@@ -164,7 +164,7 @@
           <div class="reflection-copy"><p class="eyebrow">STEP 06 · LEARNING REFLECTION</p><h2 id="reflectionTitle" data-i18n="reflectionTitle">AI จบเมื่อผู้เรียน<br/>อธิบายเหตุผลได้</h2><p data-i18n="reflectionDesc">การสะท้อนผลเปลี่ยน “คำตอบจากระบบ” ให้เป็นความรู้ที่ผู้เรียนสร้างขึ้นเอง</p><div class="kolb"><span>EXPERIENCE</span><span>REFLECT</span><span>CONCEPTUALIZE</span><span>EXPERIMENT</span></div><div class="session-summary"><span>SCENARIO</span><strong id="reflectionScenario">Balanced Pilot</strong><small id="reflectionScore">Readiness 64/100</small></div></div>
           <form class="reflection-form" id="reflectionForm">
             <label for="reflection1" data-i18n="reflectionQ1">1. คุณเลือกกลยุทธ์ใด และเพราะอะไร?</label><textarea id="reflection1" placeholder="อธิบายเหตุผลและหลักฐานที่ใช้ตัดสินใจ"></textarea>
-            <label for="reflection2">2. ผลลัพธ์ใดต่างจากที่คาด?</label><textarea id="reflection2" placeholder="ระบุสิ่งที่ได้เรียนรู้จากตัวเลขหรือ Scenario"></textarea>
+            <label for="reflection2" data-i18n="reflectionQ2">2. ผลลัพธ์ใดต่างจากที่คาด?</label><textarea id="reflection2" data-i18n-placeholder="reflectionPlaceholder" placeholder="ระบุสิ่งที่ได้เรียนรู้จากตัวเลขหรือ Scenario"></textarea>
             <label for="reflection3" data-i18n="reflectionQ3">3. หากทดลองใหม่ จะเปลี่ยนอะไร?</label><textarea id="reflection3" placeholder="กำหนดสมมติฐานหรือการทดสอบครั้งถัดไป"></textarea>
             <div class="save-row"><button class="primary" id="saveReflection" type="button" data-i18n="saveReflection">บันทึก Reflection</button><button class="ghost" id="downloadSummary" type="button" data-i18n="downloadSummary">ดาวน์โหลดสรุป</button></div>
             <div class="complete" id="completeState" aria-live="polite"><div><b>LEARNING LOOP</b><span data-i18n="completeText">ข้อมูลจะบันทึกเฉพาะในเบราว์เซอร์เครื่องนี้</span></div></div>
