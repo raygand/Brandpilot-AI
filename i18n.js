@@ -599,136 +599,140 @@ function t(key, replacements = {}) {
 
 
 // Apply all translations to DOM
-// Apply all translations to DOM — data-i18n based
-// Apply all translations to DOM — data-i18n based (FULL COVERAGE)
 window.applyTranslations = function applyTranslations() {
   const data = I18N[currentLang];
+  if (!data) return;
 
-  // 1. Handle ALL data-i18n attributes with proper nested key resolution
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (!key) return;
-    
-    // Special handling for nav buttons (use array index)
-    if (key === 'nav') {
-      const navIdx = Array.from(el.closest('button.nav')?.parentElement?.querySelectorAll('button.nav') || []).indexOf(el.closest('button.nav'));
-      if (data.nav && data.nav[navIdx] !== undefined) {
-        el.textContent = data.nav[navIdx];
-      }
-      return;
-    }
-    
-    // Special handling for heroProof items (use array index)
-    if (key === 'heroProof') {
-      const proofItems = document.querySelectorAll('.hero-proof span');
-      const proofIdx = Array.from(proofItems).indexOf(el);
-      if (data.heroProof && data.heroProof[proofIdx] !== undefined) {
-        el.textContent = data.heroProof[proofIdx];
-      }
-      return;
-    }
-
-    // Resolve nested key (e.g., "formLabels.price" -> data.formLabels.price)
-    const value = key.split('.').reduce((obj, k) => obj?.[k], data);
-    if (value === undefined || value === null) return;
-    
-    if (typeof value === 'string') {
-      // For textarea placeholders
-      if (el.tagName === 'TEXTAREA') {
-        el.placeholder = value;
-        return;
-      }
-      // For input placeholders
-      if (el.tagName === 'INPUT') {
-        el.placeholder = value;
-        return;
-      }
-      // If element has child elements (like <b>, <span>, <em> inside), update first text node
-      const textNodes = Array.from(el.childNodes).filter(n => n.nodeType === 3);
-      if (textNodes.length > 0) {
-        textNodes[0].textContent = value;
-      } else {
-        el.textContent = value;
-      }
-    }
-  });
-
-  // 2. Handle elements that need innerHTML (preserve <br>, <em>, <b> tags)
-  const innerHTMLMap = {
-    'heroTitle': 'heroTitle',
-    'reflectionTitle': 'reflectionTitle',
-    'readinessTitle': 'readinessTitle',
-    'scenarioTitle': 'scenarioTitle',
-    'buyerTitle': 'buyerTitle',
-    'roadmapTitle': 'roadmapTitle',
-    'inputSubtitle': 'inputDesc',
-    'productMeta': 'productMeta',
-    'dialogTitle': 'dialogTitle',
-  };
-  for (const [elementId, dataKey] of Object.entries(innerHTMLMap)) {
-    const el = document.getElementById(elementId);
-    if (el && data[dataKey]) {
-      el.innerHTML = data[dataKey];
+  // Helper: safely update text content
+  function setText(el, value) {
+    if (!el || value === undefined || value === null) return;
+    if (typeof value !== 'string') return;
+    // If value contains HTML tags, use innerHTML
+    if (value.includes('<') && value.includes('>')) {
+      el.innerHTML = value;
+    } else {
+      el.textContent = value;
     }
   }
-  // Also handle elements with data-i18n that have innerHTML content
+
+  // === 1. Process ALL data-i18n attributes ===
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    // Check if the original content had HTML tags (br, em, b)
-    const value = key.split('.').reduce((obj, k) => obj?.[k], data);
-    if (typeof value === 'string' && (value.includes('<br') || value.includes('<em') || value.includes('<b>'))) {
-      el.innerHTML = value;
+    try {
+      const key = el.getAttribute('data-i18n');
+      if (!key) return;
+
+      // Special: nav array (multiple buttons share same key)
+      if (key === 'nav') {
+        const allNav = Array.from(document.querySelectorAll('button.nav b[data-i18n="nav"]'));
+        const idx = allNav.indexOf(el);
+        if (idx >= 0 && Array.isArray(data.nav) && data.nav[idx]) {
+          el.textContent = data.nav[idx];
+        }
+        return;
+      }
+
+      // Special: heroProof array
+      if (key === 'heroProof') {
+        const allProof = Array.from(document.querySelectorAll('.hero-proof span[data-i18n="heroProof"]'));
+        const idx = allProof.indexOf(el);
+        if (idx >= 0 && Array.isArray(data.heroProof) && data.heroProof[idx]) {
+          el.textContent = data.heroProof[idx];
+        }
+        return;
+      }
+
+      // Resolve nested key
+      let value = data;
+      for (const part of key.split('.')) {
+        value = value?.[part];
+        if (value === undefined) break;
+      }
+      if (value === undefined || value === null) return;
+
+      // Handle based on element type
+      if (el.tagName === 'TEXTAREA' || (el.tagName === 'INPUT' && !['button','submit','reset'].includes(el.type))) {
+        el.placeholder = value;
+      } else if (el.tagName === 'OPTION') {
+        el.textContent = value;
+      } else if (typeof value === 'string') {
+        setText(el, value);
+      }
+    } catch (e) {
+      console.warn('i18n error for element:', e);
     }
   });
 
-  // 3. Handle select options with nested keys
-  document.querySelectorAll('select option[data-i18n]').forEach(opt => {
-    const key = opt.getAttribute('data-i18n');
-    const value = key.split('.').reduce((obj, k) => obj?.[k], data);
-    if (typeof value === 'string') opt.textContent = value;
+  // === 2. Handle innerHTML elements (preserve <br>, <em>, <b>) ===
+  const innerHTMLIds = ['heroTitle', 'reflectionTitle', 'readinessTitle', 'scenarioTitle', 'buyerTitle', 'roadmapTitle', 'productMeta', 'inputDesc'];
+  innerHTMLIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && data[id]) {
+      try { el.innerHTML = data[id]; } catch(e) { console.warn('innerHTML error:', id, e); }
+    }
   });
 
-  // 4. Handle special UI updates
-  // WOW button with icon
+  // === 3. Special UI elements ===
   const wowBtn = document.getElementById('wowBtn');
   if (wowBtn && data.wowLabel) {
-    wowBtn.innerHTML = `<i></i>${data.wowLabel}`;
+    try { wowBtn.innerHTML = '<i></i>' + data.wowLabel; } catch(e) {}
   }
-  // Case chip
+
   const caseChip = document.getElementById('caseChipLabel');
-  if (caseChip && data.caseChip) caseChip.textContent = data.caseChip;
-  // Mode label
+  if (caseChip && data.caseChip) {
+    try { caseChip.textContent = data.caseChip; } catch(e) {}
+  }
+
   const modeLabel = document.getElementById('modeLabel');
-  if (modeLabel && data.mode) modeLabel.textContent = data.mode;
-  // Reset button
+  if (modeLabel && data.mode) {
+    try { modeLabel.textContent = data.mode; } catch(e) {}
+  }
+
   const resetTop = document.getElementById('resetTop');
-  if (resetTop && data.resetTop) resetTop.textContent = data.resetTop;
-  // Hero start button (first .primary[data-next] = hero)
+  if (resetTop && data.resetTop) {
+    try { resetTop.textContent = data.resetTop; } catch(e) {}
+  }
+
+  // Hero start button
   const heroStart = document.querySelector('.hero .primary[data-next]') || document.querySelector('button.primary[data-next]');
-  if (heroStart && data.heroStart) heroStart.textContent = data.heroStart;
+  if (heroStart && data.heroStart) {
+    try { heroStart.textContent = data.heroStart; } catch(e) {}
+  }
+
   // Disclaimer
   document.querySelectorAll('.disclaimer').forEach(el => {
-    if (data.disclaimer) el.textContent = data.disclaimer;
+    if (data.disclaimer) { try { el.textContent = data.disclaimer; } catch(e) {} }
   });
-  // Guardrail (has span inside)
+
+  // Guardrail
   document.querySelectorAll('.guardrail').forEach(el => {
     if (data.guardrail) {
-      const span = el.querySelector('span');
-      if (span) {
-        // Keep the span, update the text after it
-        const textNode = Array.from(el.childNodes).find(n => n.nodeType === 3);
-        if (textNode) textNode.textContent = ' ' + data.guardrail;
-      } else {
-        el.innerHTML = `<span>HUMAN-IN-THE-LOOP</span> ${data.guardrail}`;
-      }
+      try {
+        const span = el.querySelector('span');
+        if (span) {
+          const textNode = Array.from(el.childNodes).find(n => n.nodeType === 3);
+          if (textNode) textNode.textContent = ' ' + data.guardrail;
+        } else {
+          el.innerHTML = '<span>HUMAN-IN-THE-LOOP</span> ' + data.guardrail;
+        }
+      } catch(e) {}
     }
   });
-  // Dialog h3
-  document.querySelectorAll('#reasonDialog h3').forEach(el => {
-    if (data.dialogTitle) el.innerHTML = data.dialogTitle;
-  });
+
   // Confidence value
   const confEl = document.getElementById('confidenceValue');
-  if (confEl && data.confidenceValues?.medium) confEl.textContent = data.confidenceValues.medium;
+  if (confEl && data.confidenceValues?.medium) {
+    try { confEl.textContent = data.confidenceValues.medium; } catch(e) {}
+  }
+
+  // Nav aria-labels
+  const navBtns = document.querySelectorAll('button.nav');
+  if (data.navAria && navBtns.length) {
+    navBtns.forEach((el, i) => {
+      if (data.navAria[i]) {
+        try { el.setAttribute('aria-label', data.navAria[i]); } catch(e) {}
+      }
+    });
+  }
 };
+
 export { I18N, currentLang, setLanguage, t };

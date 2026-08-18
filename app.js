@@ -174,7 +174,8 @@ function renderReadiness() {
   $('#scoreHeadline').textContent = score;
   $('#scoreValue').textContent = score;
   $('#scoreRing').style.setProperty('--score', `${score}%`);
-  $('#confidenceLabel').textContent = t('confidenceValues.' + confidence);
+  const confLabelEl = document.querySelector('[data-i18n="confidenceLabel"]') || $('#confidenceLabel');
+  if (confLabelEl) confLabelEl.textContent = t('confidenceValues.' + confidence);
   const status = score >= 80 ? ['green', t('statusLabels.green')] : score >= 65 ? ['aqua', t('statusLabels.aqua')] : score >= 50 ? ['amber', t('statusLabels.amber')] : ['red', t('statusLabels.red')];
   $('#readinessStatus').className = `status ${status[0]}`;
   $('#readinessStatus span').textContent = status[1];
