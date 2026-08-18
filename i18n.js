@@ -12,7 +12,10 @@ const I18N = {
     heroTitle: 'ทดลองก่อนลงทุน<br/><em>เรียนรู้ก่อนเสี่ยงจริง</em>',
     heroLead: 'เปลี่ยนข้อมูลสินค้าให้เป็นสถานการณ์จำลอง เพื่อฝึกคิดเรื่องราคา ช่องทาง โปรโมชั่น สต็อก และการนำเสนอ Buyer อย่างมีหลักฐาน',
     heroStart: 'เริ่มจำลองสถานการณ์',
+    reflectionQ1Placeholder: 'อธิบายเหตุผลและหลักฐานที่ใช้ตัดสินใจ...',
     reflectionPlaceholder: 'ระบุสิ่งที่ได้เรียนรู้จากตัวเลขหรือการทดลอง...',
+    reflectionQ3Placeholder: 'กำหนดสมมติฐานหรือการทดสอบครั้งถัดไป...',
+
     reflectionQ2: '2. ผลลัพธ์ใดต่างจากที่คาด?',
     roadmapTitle: 'เปลี่ยนข้อสังเกตให้เป็นการทดลองที่ลงมือได้',
     buyerAnswerPlaceholder: 'พิมพ์คำตอบของคุณ โดยใช้ตัวเลขและเกณฑ์ตัดสินใจ...',
@@ -220,7 +223,10 @@ const I18N = {
     heroTitle: 'Test before invest<br/><em>Learn before you risk</em>',
     heroLead: 'Turn product data into simulated scenarios to practice thinking about pricing, channels, promotions, stock, and Buyer pitches with evidence',
     heroStart: 'Start Simulation',
+    reflectionQ1Placeholder: 'Explain your reasoning and the evidence behind it...',
     reflectionPlaceholder: 'Note what you learned from the numbers or experiments...',
+    reflectionQ3Placeholder: 'Define the next hypothesis or test...',
+
     buyerAnswerPlaceholder: 'Type your answer using numbers and decision criteria...',
     buyerPrompt: 'Answer with customer problems, evidence, and verifiable differentiation.',
     buyerQuestion: 'Why should this product get shelf space?',
@@ -412,7 +418,10 @@ const I18N = {
     heroTitle: '投资前先测试<br/><em>冒险前先学习</em>',
     heroLead: '将产品数据转化为模拟场景，练习有证据支撑的定价、渠道、促销、库存和买家提案思维',
     heroStart: '开始模拟',
+    reflectionQ1Placeholder: '解释你的推理和证据...',
     reflectionPlaceholder: '记录你从数字或实验中学到的东西...',
+    reflectionQ3Placeholder: '定义下一个假设或测试...',
+
     buyerAnswerPlaceholder: '用数字和决策标准输入你的答案...',
     buyerPrompt: '用客户问题、证据和可验证的差异化来回答',
     buyerQuestion: '为什么这个产品应该获得货架空间？',

@@ -145,7 +145,7 @@
           </div>
         </div>
         <div class="rubric" id="rubric" aria-label="คะแนนตามเกณฑ์"></div>
-        <div class="coach-note"><b>Prototype note</b> <span data-i18n="coachNote">การประเมินหน้านี้ใช้ Rubric-based evaluator ภายในเบราว์เซอร์ ไม่มีการส่งข้อความไปยังบริการภายนอก</span>ใช้ Rubric-based evaluator ภายในเบราว์เซอร์ ไม่มีการส่งข้อความไปยังบริการภายนอก</div>
+        <div class="coach-note"><b>Prototype note</b> <span data-i18n="coachNote">การประเมินหน้านี้ใช้ Rubric-based evaluator ภายในเบราว์เซอร์ ไม่มีการส่งข้อความไปยังบริการภายนอก</span></div>
         <div class="actionbar"><p><b>Buyer average</b><span id="buyerAverage" data-i18n="buyerAverageNone">ยังไม่มีคะแนน</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextRoadmap">สร้างแผน 90 วัน</button></div></div>
       </section>
 
@@ -156,21 +156,21 @@
         </div>
         <div class="roadmap" id="roadmap"></div>
         <div class="roadmap-summary"><div><span data-i18n="roadmapKeys.budget">งบจำลอง</span><strong id="roadmapBudget">฿0</strong></div><div><span data-i18n="roadmapKeys.contribution">Contribution เป้าหมาย</span><strong id="roadmapContribution">฿0/หน่วย</strong></div><div><span data-i18n="roadmapKeys.gate">จุดตัดสินใจ</span><strong id="roadmapGate">Pilot / Iterate / Stop</strong></div></div>
-        <div class="actionbar"><p><b>Effectuation</b> <span data-i18n="effectuation">ลงทุนเท่าที่รับความเสียหายได้ และขยายเมื่อหลักฐานเพิ่มขึ้น</span></p>ได้ และขยายเมื่อหลักฐานเพิ่มขึ้น</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextReflection">สะท้อนการเรียนรู้</button></div></div>
+        <div class="actionbar"><p><b>Effectuation</b> <span data-i18n="effectuation">ลงทุนเท่าที่รับความเสียหายได้ และขยายเมื่อหลักฐานเพิ่มขึ้น</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" data-next type="button" data-i18n="nextReflection">สะท้อนการเรียนรู้</button></div></div>
       </section>
 
       <section class="screen" data-screen="6" aria-labelledby="reflectionTitle">
         <div class="reflection-layout">
           <div class="reflection-copy"><p class="eyebrow">STEP 06 · LEARNING REFLECTION</p><h2 id="reflectionTitle" data-i18n="reflectionTitle">AI จบเมื่อผู้เรียน<br/>อธิบายเหตุผลได้</h2><p data-i18n="reflectionDesc">การสะท้อนผลเปลี่ยน “คำตอบจากระบบ” ให้เป็นความรู้ที่ผู้เรียนสร้างขึ้นเอง</p><div class="kolb"><span>EXPERIENCE</span><span>REFLECT</span><span>CONCEPTUALIZE</span><span>EXPERIMENT</span></div><div class="session-summary"><span>SCENARIO</span><strong id="reflectionScenario">Balanced Pilot</strong><small id="reflectionScore">Readiness 64/100</small></div></div>
           <form class="reflection-form" id="reflectionForm">
-            <label for="reflection1" data-i18n="reflectionQ1">1. คุณเลือกกลยุทธ์ใด และเพราะอะไร?</label><textarea id="reflection1" placeholder="อธิบายเหตุผลและหลักฐานที่ใช้ตัดสินใจ"></textarea>
+            <label for="reflection1" data-i18n="reflectionQ1">1. คุณเลือกกลยุทธ์ใด และเพราะอะไร?</label><textarea id="reflection1" data-i18n-placeholder="reflectionQ1Placeholder" placeholder="อธิบายเหตุผลและหลักฐานที่ใช้ตัดสินใจ"></textarea>
             <label for="reflection2" data-i18n="reflectionQ2">2. ผลลัพธ์ใดต่างจากที่คาด?</label><textarea id="reflection2" data-i18n-placeholder="reflectionPlaceholder" placeholder="ระบุสิ่งที่ได้เรียนรู้จากตัวเลขหรือ Scenario"></textarea>
-            <label for="reflection3" data-i18n="reflectionQ3">3. หากทดลองใหม่ จะเปลี่ยนอะไร?</label><textarea id="reflection3" placeholder="กำหนดสมมติฐานหรือการทดสอบครั้งถัดไป"></textarea>
+            <label for="reflection3" data-i18n="reflectionQ3">3. หากทดลองใหม่ จะเปลี่ยนอะไร?</label><textarea id="reflection3" data-i18n-placeholder="reflectionQ3Placeholder" placeholder="กำหนดสมมติฐานหรือการทดสอบครั้งถัดไป"></textarea>
             <div class="save-row"><button class="primary" id="saveReflection" type="button" data-i18n="saveReflection">บันทึก Reflection</button><button class="ghost" id="downloadSummary" type="button" data-i18n="downloadSummary">ดาวน์โหลดสรุป</button></div>
             <div class="complete" id="completeState" aria-live="polite"><div><b>LEARNING LOOP</b><span data-i18n="completeText">ข้อมูลจะบันทึกเฉพาะในเบราว์เซอร์เครื่องนี้</span></div></div>
           </form>
         </div>
-        <div class="actionbar"><p><b>Privacy</b> <span data-i18n="privacy">Prototype นี้ไม่มี Backend และไม่ส่งข้อมูลออกจากอุปกรณ์</span></p> และไม่ส่งข้อมูลออกจากอุปกรณ์</p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" id="restart" type="button" data-i18n="restartBtn">เริ่มรอบจำลองใหม่</button></div></div>
+        <div class="actionbar"><p><b>Privacy</b> <span data-i18n="privacy">Prototype นี้ไม่มี Backend และไม่ส่งข้อมูลออกจากอุปกรณ์</span></p><div class="actions"><button class="ghost" data-back type="button">ย้อนกลับ</button><button class="primary" id="restart" type="button" data-i18n="restartBtn">เริ่มรอบจำลองใหม่</button></div></div>
       </section>
     </section>
   </main>
