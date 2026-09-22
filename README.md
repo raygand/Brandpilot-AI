@@ -31,3 +31,13 @@ npm run build
 ```
 
 The static build is generated in `dist/` and deployed automatically to GitHub Pages from the `main` branch.
+
+## September 2026 functional repair
+
+- Thai, English and Simplified Chinese cover navigation, static/dynamic results, validation, dialogs, and exported summaries. A saved language takes precedence over browser language.
+- Seven routes support browser Back/Forward and direct hash links. Only the active screen is exposed to keyboard focus.
+- Invalid numbers block analysis. Valid edits recalculate readiness, three scenarios, and the selected roadmap.
+- Five buyer answers, scores, reflections and selection survive reloads. Editing an answer invalidates its previous score. Local storage failures show a message and leave in-memory use available.
+- Financial comparison discloses GP, effective discounts, variable channel costs, launch-outlay and sales multipliers. Discounts respect the entered maximum. Extra launch budget and stock are shown; unfunded choices are not recommended. Positive unit contribution does not imply overall launch profit.
+- The strategy recap is a closeable native dialog and respects reduced motion; it displays existing calculated results, not generative AI inference.
+- `npm test` runs 29 calculation, persistence, translation, and application DOM regression cases before Pages deployment. Browser QA evidence and limits are recorded in `docs/qa/release-2026-09-22.md`.
